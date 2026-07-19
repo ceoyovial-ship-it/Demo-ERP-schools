@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Yovial ERP — Light theme: deep teal primary, warm neutrals */
+    --background: 210 20% 98%;
+    --foreground: 210 30% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 30% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 30% 12%;
+
+    /* Primary — Deep Teal */
+    --primary: 186 85% 32%;
+    --primary-foreground: 186 50% 96%;
+    --primary-hover: 186 85% 28%;
+
+    /* Secondary — Soft Slate */
+    --secondary: 210 16% 93%;
+    --secondary-foreground: 210 30% 18%;
+
+    --muted: 210 16% 95%;
+    --muted-foreground: 210 12% 45%;
+
+    /* Accent — Warm Amber */
+    --accent: 38 90% 55%;
+    --accent-foreground: 38 50% 12%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 60% 40%;
+    --success-foreground: 152 50% 96%;
+
+    --warning: 38 90% 50%;
+    --warning-foreground: 38 50% 12%;
+
+    --info: 210 90% 50%;
+    --info-foreground: 210 50% 96%;
+
+    --border: 210 16% 90%;
+    --input: 210 16% 88%;
+    --ring: 186 85% 32%;
+
+    --chart-1: 186 85% 32%;
+    --chart-2: 152 60% 40%;
+    --chart-3: 38 90% 55%;
+    --chart-4: 280 60% 55%;
+    --chart-5: 0 72% 51%;
+
+    --radius: 0.75rem;
+
+    --sidebar: 210 24% 14%;
+    --sidebar-foreground: 210 16% 85%;
+    --sidebar-accent: 186 50% 22%;
+    --sidebar-border: 210 20% 22%;
+  }
+
+  .dark {
+    --background: 210 28% 8%;
+    --foreground: 210 16% 92%;
+
+    --card: 210 24% 11%;
+    --card-foreground: 210 16% 92%;
+
+    --popover: 210 24% 11%;
+    --popover-foreground: 210 16% 92%;
+
+    --primary: 186 80% 42%;
+    --primary-foreground: 186 50% 10%;
+    --primary-hover: 186 80% 48%;
+
+    --secondary: 210 18% 18%;
+    --secondary-foreground: 210 16% 90%;
+
+    --muted: 210 18% 16%;
+    --muted-foreground: 210 12% 55%;
+
+    --accent: 38 85% 55%;
+    --accent-foreground: 38 50% 10%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 152 55% 45%;
+    --success-foreground: 152 50% 96%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 38 50% 10%;
+
+    --info: 210 85% 55%;
+    --info-foreground: 210 50% 96%;
+
+    --border: 210 18% 20%;
+    --input: 210 18% 22%;
+    --ring: 186 80% 42%;
+
+    --chart-1: 186 80% 42%;
+    --chart-2: 152 55% 45%;
+    --chart-3: 38 85% 55%;
+    --chart-4: 280 55% 60%;
+    --chart-5: 0 62% 50%;
+
+    --sidebar: 210 30% 6%;
+    --sidebar-foreground: 210 16% 80%;
+    --sidebar-accent: 186 40% 18%;
+    --sidebar-border: 210 24% 14%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/60 shadow-sm;
+  }
+
+  .glass-sidebar {
+    @apply backdrop-blur-xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-chart-2 bg-clip-text text-transparent;
+  }
+
+  /* Premium shadow */
+  .shadow-premium {
+    box-shadow: 0 1px 2px hsl(var(--foreground) / 0.04),
+                0 4px 16px hsl(var(--foreground) / 0.06),
+                0 12px 32px hsl(var(--foreground) / 0.04);
+  }
+
+  .shadow-premium-lg {
+    box-shadow: 0 2px 4px hsl(var(--foreground) / 0.05),
+                0 8px 24px hsl(var(--foreground) / 0.08),
+                0 20px 48px hsl(var(--foreground) / 0.06);
+  }
+
+  /* Sidebar nav item active glow */
+  .nav-active-glow {
+    box-shadow: inset 3px 0 0 0 hsl(var(--primary)),
+                0 0 24px hsl(var(--primary) / 0.15);
+  }
+
+  /* Smooth focus ring */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted) / 0.5) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.3s ease-out forwards;
+  }
+
+  @keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+}
