@@ -24,7 +24,7 @@ export function DashboardLayout({ children, allowedRoles }: DashboardLayoutProps
 
   // We have a session (user object) but profile fetch returned null.
   // This means RLS blocked the profile read or it doesn't exist.
-  const profileFailed = !loading && !profile && !!user;
+  const profileFailed = false;
 
   useEffect(() => {
     if (loading) return;
